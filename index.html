@@ -4,18 +4,18 @@
   <title>GitHub Pages Site</title>
   <script src="https://cdn.jsdelivr.net/npm/airtable@0.6.3/dist/airtable.browser.js"></script>
   <script>
-    var base = new Airtable({ apiKey: 'YOUR_API_KEY' }).base('YOUR_BASE_ID');
+    var base = new Airtable({ apiKey: 'patrMfHGJ4y22rTI7.1706d0ff427545324638056aab828ab228b50f7abb008a99a9d1c14f077eb1a8' }).base('appB3A3DbbS5EJ07P');
 
     function fetchDataFromAirtable(code) {
-      base('YOUR_TABLE_NAME').select({
+      base('Main').select({
         filterByFormula: `Code = "${code}"`
       }).eachPage(function page(records, fetchNextPage) {
         // Process fetched records and generate your custom view
         records.forEach(function(record) {
           // Process each record and display relevant data on your page
           var dataElement = document.createElement('p');
-          dataElement.textContent = record.get('YourFieldName');
-          document.getElementById('data-container').appendChild(dataElement);
+          dataElement.textContent = record.get('Code');
+          document.getElementById('School Name').appendChild(dataElement);
         });
 
         fetchNextPage();
