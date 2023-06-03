@@ -7,7 +7,7 @@
     var base = new Airtable({ apiKey: 'patrMfHGJ4y22rTI7.1706d0ff427545324638056aab828ab228b50f7abb008a99a9d1c14f077eb1a8' }).base('appB3A3DbbS5EJ07P');
 
     function fetchDataFromAirtable(code) {
-      base('YOUR_TABLE_NAME').select({
+      base('Main').select({
         filterByFormula: `Code = "${code}"`
       }).eachPage(function page(records, fetchNextPage) {
         // Process fetched records and generate your custom view
@@ -16,7 +16,7 @@
         
         records.forEach(function(record) {
           // Process each record and display relevant data on your page
-          var schoolName = record.get('School Name');
+          var schoolName = record.fields['School Name']; // Use correct field name
           var dataElement = document.createElement('p');
           dataElement.textContent = schoolName;
           dataContainer.appendChild(dataElement);
