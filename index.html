@@ -7,15 +7,15 @@
     var base = new Airtable({ apiKey: 'patrMfHGJ4y22rTI7.1706d0ff427545324638056aab828ab228b50f7abb008a99a9d1c14f077eb1a8' }).base('appB3A3DbbS5EJ07P');
 
     function fetchDataFromAirtable(code) {
-      base('Main').select({
+      base('YOUR_TABLE_NAME').select({
         filterByFormula: `Code = "${code}"`
       }).eachPage(function page(records, fetchNextPage) {
         // Process fetched records and generate your custom view
         records.forEach(function(record) {
           // Process each record and display relevant data on your page
           var dataElement = document.createElement('p');
-          dataElement.textContent = record.get('Code');
-          document.getElementById('School Name').appendChild(dataElement);
+          dataElement.textContent = record.get('School Name');
+          document.getElementById('data-container').appendChild(dataElement);
         });
 
         fetchNextPage();
