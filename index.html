@@ -11,11 +11,15 @@
         filterByFormula: `Code = "${code}"`
       }).eachPage(function page(records, fetchNextPage) {
         // Process fetched records and generate your custom view
+        var dataContainer = document.getElementById('data-container');
+        dataContainer.innerHTML = ''; // Clear previous data
+        
         records.forEach(function(record) {
           // Process each record and display relevant data on your page
+          var schoolName = record.get('School Name');
           var dataElement = document.createElement('p');
-          dataElement.textContent = record.get('School Name');
-          document.getElementById('data-container').appendChild(dataElement);
+          dataElement.textContent = schoolName;
+          dataContainer.appendChild(dataElement);
         });
 
         fetchNextPage();
