@@ -1,65 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GitHub Pages Site</title>
-  <script src="https://static.airtable.com/js/sdk.js"></script>
-  <script>
-    var base = new Airtable({ apiKey: 'patrMfHGJ4y22rTI7.1706d0ff427545324638056aab828ab228b50f7abb008a99a9d1c14f077eb1a8' }).base('appB3A3DbbS5EJ07P');
-
-    function fetchDataFromAirtable(code) {
-      console.log('Fetching data for code:', code);
-      
-      base('Main').select({
-        filterByFormula: `Code = "${code}"`
-      }).eachPage(function page(records, fetchNextPage) {
-        // Process fetched records and generate your custom view
-        console.log('Fetched records:', records);
-        
-        var dataContainer = document.getElementById('data-container');
-        dataContainer.innerHTML = ''; // Clear previous data
-        
-        records.forEach(function(record) {
-          // Process each record and display relevant data on your page
-          var schoolName = record.fields['School Name']; // Use correct field name
-          console.log('School Name:', schoolName);
-          
-          var dataElement = document.createElement('p');
-          dataElement.textContent = schoolName;
-          dataContainer.appendChild(dataElement);
-        });
-
-        fetchNextPage();
-      }, function done(err) {
-        if (err) { 
-          console.error('Error:', err);
-        }
-      });
-    }
-
-    // Handle form submission
-    var form = document.getElementById('data-form');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      var code = document.getElementById('code-input').value;
-      fetchDataFromAirtable(code);
-    });
-  </script>
-  <style>
-    /* Add your custom CSS styles here */
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungkook Photo Display</title>
 </head>
 <body>
-  <h1>GitHub Pages Site</h1>
-  <form id="data-form">
-    <label for="code-input">Enter a code:</label>
-    <input type="text" id="code-input" required>
-    <button type="submit">Fetch Data</button>
-  </form>
-  <div id="data-container">
-    <!-- Fetched data will be displayed here -->
-  </div>
+    <img id="jungkookImage" src="" alt="Jungkook's Photo">
+    <script src="script.js"></script>
 </body>
 </html>
-
-
